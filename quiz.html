@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quiz</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8; /* Light background color */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Align items at the start */
+            min-height: 100vh; /* Allow body to grow */
+            overflow: auto; /* Allow scrolling */
+            text-align: center;
+        }
+        h1 {
+            color: #FF6F61; /* A lovely pink color */
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .difficulty, .question {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin: 15px;
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+            transition: transform 0.3s;
+        }
+        .difficulty:hover, .question:hover {
+            transform: translateY(-5px);
+        }
+        .difficulty button, .submit-button, .back-button {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #FF6F61;
+            color: white;
+            transition: background 0.3s;
+            width: 100%;
+            max-width: 200px;
+        }
+        .difficulty button:hover, .submit-button:hover, .back-button:hover {
+            background-color: #ff5a4f; /* Darker pink on hover */
+        }
+        .question {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #FF6F61;
+            background: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+            font-size: 1.1em;
+            color: #555;
+            padding-left: 20px;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+        .result {
+            font-size: 1.5em;
+            color: #FF6F61;
+            margin-top: 20px;
+        }
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            .difficulty button, .submit-button, .back-button {
+                font-size: 1em;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Coding Quiz</h1>
+    
+    <div id="quizArea" class="difficulty">
+        <h2>Select Difficulty</h2>
+        <button onclick="startQuiz('easy')">Easy</button>
+        <button onclick="startQuiz('normal')">Normal</button>
+        <button onclick="startQuiz('hard')">Hard</button>
+    </div>
+
+    <div id="quizContainer" style="display: none;"></div>
+    <button class="submit-button" id="submitButton" style="display: none;">Submit</button>
+    <button class="back-button" id="backButton" style="display: none;">Back to Difficulty Selection</button>
+    <div class="footer" id="result"></div>
+
+    <script>
+        // Quiz questions for different difficulties
+        const questions = {
+            easy: [
+                {
+                    question: "What is the correct syntax to output 'Hello World' in Python?",
+                    options: ["echo 'Hello World'", "print('Hello World')", "Console.WriteLine('Hello World')", "System.out.println('Hello World')"],
+                    answer: 1
+                },
+                {
+                    question: "Which of the following is not a programming language?",
+                    options: ["Python", "HTML", "JavaScript", "Ruby"],
+                    answer: 1
+                },
+                {
+                    question: "What is 2 + 2?",
+                    options: ["4", "22", "3", "5"],
+                    answer: 0
+                }
+            ],
+            normal: [
+                {
+                    question: "What will the output of the following code be? console.log(0.1 + 0.2 == 0.3);",
+                    options: ["true", "false"],
+                    answer: 1
+                },
+                {
+                    question: "What is the output of the following code? let x = '5'; console.log(x + 1);",
+                    options: ["51", "6", "NaN", "5"],
+                    answer: 0
+                },
+                {
+                    question: "Which of the following is a method to convert a string to a number in JavaScript?",
+                    options: ["parseInt()", "toString()", "convert()", "stringify()"],
+                    answer: 0
+                }
+            ],
+            hard: [
+                {
+                    question: "What is a closure in JavaScript?",
+                    options: ["A function that remembers its outer variables", "A block of code", "A type of loop", "None of the above"],
+                    answer: 0
+                },
+                {
+                    question: "What does 'this' refer to in JavaScript?",
+                    options: ["The global object", "The current object", "The parent object", "None of the above"],
+                    answer: 1
+                },
+                {
+                    question: "What is the purpose of the 'use strict' directive in JavaScript?",
+                    options: ["To enable strict mode", "To disable errors", "To improve performance", "None of the above"],
+                    answer: 0
+                }
+            ]
+        };
+
+        // Start the quiz
+        function startQuiz(difficulty) {
+            document.getElementById('quizArea').style.display = 'none'; // Hide difficulty selection
+            loadQuiz(difficulty); // Load the quiz for selected difficulty
+            document.getElementById('quizContainer').style.display = 'block'; // Show quiz container
+            document.getElementById('submitButton').style.display = 'block'; // Show submit button
+            document.getElementById('backButton').style.display = 'block'; // Show back button
+            document.getElementById('quizContainer').setAttribute('data-difficulty', difficulty); // Store difficulty
+        }
+
+        // Load the quiz based on selected difficulty
+        function loadQuiz(difficulty) {
+            const quizContainer = document.getElementById('quizContainer');
+            quizContainer.innerHTML = ''; // Clear previous questions
+
+            // Create questions based on selected difficulty
+            questions[difficulty].forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <p><strong>${index + 1}. ${q.question}</strong></p>
+                    ${q.options.map((option, i) => `<label><input type="radio" name="q${index}" value="${i}"> ${option}</label>`).join('')}
+                `;
+                quizContainer.appendChild(questionDiv);
+            });
+        }
+
+        // Calculate the result and display it
+        document.getElementById('submitButton').addEventListener('click', () => {
+            const difficulty = document.getElementById('quizContainer').getAttribute('data-difficulty');
+            let score = 0;
+
+            questions[difficulty].forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selectedOption && parseInt(selectedOption.value) === q.answer) {
+                    score++;
+                }
+            });
+
+            const result = document.getElementById('result');
+            result.innerHTML = `<div class="result">Your score: ${score} out of ${questions[difficulty].length}</div>`;
+        });
+
+        // Back button functionality
+        document.getElementById('backButton').addEventListener('click', () => {
+            document.getElementById('quizArea').style.display = 'block'; // Show difficulty selection
+            document.getElementById('quizContainer').style.display = 'none'; // Hide quiz container
+            document.getElementById('submitButton').style.display = 'none'; // Hide submit button
+            document.getElementById('backButton').style.display = 'none'; // Hide back button
+            document.getElementById('result').innerHTML = ''; // Clear result
+        });
+    </script>
+
+</body></html>
