@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2: HTML Elements and Attributes - Expanded</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        main {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: #38f9d7;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background: #3bb2b8;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        pre {
+            background: #f8f8f8;
+            padding: 10px;
+            border-left: 5px solid #38f9d7;
+            overflow-x: auto;
+        }
+        .example {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Lesson 2: HTML Elements and Attributes</h1>
+</header>
+
+<main>
+    <h2>1. Understanding HTML Elements</h2>
+    <p>HTML elements are the building blocks of an HTML page. Each element typically consists of a start tag, content, and an end tag. Let’s look at the basic structure of an HTML element:</p>
+    <pre><code>&lt;tagname&gt;Content goes here&lt;/tagname&gt;</code></pre>
+    <p>The start tag includes the element’s name, enclosed in angle brackets. The end tag also includes the element’s name but is prefixed with a forward slash (<code>/</code>).</p>
+
+    <h3>1.1. Example: Basic HTML Element</h3>
+    <pre><code>&lt;p&gt;This is a paragraph element.&lt;/p&gt;</code></pre>
+
+    <h2>2. Types of HTML Elements</h2>
+    <p>HTML elements can be classified into two categories:</p>
+    <ul>
+        <li><strong>Block-level elements</strong>: They occupy the entire width available and start on a new line. Examples include <code>&lt;div&gt;</code>, <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>, and <code>&lt;p&gt;</code>.</li>
+        <li><strong>Inline elements</strong>: They occupy only as much width as necessary and do not start on a new line. Examples include <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, and <code>&lt;img&gt;</code>.</li>
+    </ul>
+    
+    <h3>2.1. Example: Block-level vs. Inline Elements</h3>
+    <p>In the following example, the <code>&lt;div&gt;</code> is a block-level element, and the <code>&lt;span&gt;</code> is an inline element.</p>
+    <pre><code>&lt;div&gt;
+    This is a block-level element.
+&lt;/div&gt;
+&lt;span&gt;This is an inline element.&lt;/span&gt;</code></pre>
+
+    <h2>3. Understanding HTML Attributes</h2>
+    <p>HTML attributes provide additional information about HTML elements. They are specified within the start tag of an element and usually come in name/value pairs. Here’s an example:</p>
+    <pre><code>&lt;tagname attribute="value"&gt;Content&lt;/tagname&gt;</code></pre>
+    <p>Attributes are used to configure elements or modify their behavior. For example, the <code>href</code> attribute in an <code>&lt;a&gt;</code> (anchor) element specifies the URL to which the link points.</p>
+
+    <h3>3.1. Common HTML Attributes</h3>
+    <ul>
+        <li><code>id</code>: A unique identifier for the element.</li>
+        <li><code>class</code>: Specifies one or more class names for an element (used for CSS styling).</li>
+        <li><code>style</code>: Allows you to add inline CSS styles to an element.</li>
+        <li><code>title</code>: Provides additional information about an element (visible as a tooltip).</li>
+        <li><code>src</code>: Specifies the URL of an image, video, or audio file.</li>
+        <li><code>alt</code>: Specifies alternative text for an image, used for accessibility.</li>
+    </ul>
+
+    <h2>4. Practical Examples</h2>
+    <p>Let’s look at some practical examples of using HTML elements with attributes.</p>
+
+    <h3>4.1. Example 1: Using <code>&lt;a&gt;</code> Tag with Attributes</h3>
+    <p>The <code>&lt;a&gt;</code> tag defines a hyperlink. It uses the <code>href</code> attribute to specify the destination URL and the <code>title</code> attribute to provide additional information:</p>
+    <div class="example">
+        <pre><code>&lt;a href="https://www.example.com" title="Visit Example"&gt;Click here to visit Example&lt;/a&gt;</code></pre>
+        <p>Output: <a href="https://www.example.com" title="Visit Example">Click here to visit Example</a></p>
+    </div>
+
+    <h3>4.2. Example 2: Using <code>&lt;img&gt;</code> Tag with Attributes</h3>
+    <p>The <code>&lt;img&gt;</code> tag is used to display an image. It uses the <code>src</code> attribute to specify the image source and the <code>alt</code> attribute to provide alternative text:</p>
+    <div class="example">
+        <pre><code>&lt;img src="image.jpg" alt="A beautiful scenery" width="300"&gt;</code></pre>
+        <p>Output: <img src="https://via.placeholder.com/150" alt="A beautiful scenery" width="150"></p>
+    </div>
+
+    <h3>4.3. Example 3: Using <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> Tags with <code>class</code> Attribute</h3>
+    <p>In this example, the <code>&lt;div&gt;</code> tag represents a container with a specific class, and the <code>&lt;span&gt;</code> tag represents an inline element:</p>
+    <div class="example">
+        <pre><code>&lt;div class="container"&gt;
+    &lt;h2&gt;Welcome to My Web Page&lt;/h2&gt;
+    &lt;span&gt;This is an example of using &lt;code&gt;class&lt;/code&gt; attributes.&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        <div class="container">
+            <h2>Welcome to My Web Page</h2>
+            <span>This is an example of using <code>class</code> attributes.</span>
+        </div>
+    </div>
+
+    <h2>5. Advanced Attributes</h2>
+    <p>Some advanced attributes allow you to control the behavior of elements:</p>
+    <ul>
+        <li><code>target</code>: Specifies where to open the linked document (e.g., <code>_blank</code> for a new tab).</li>
+        <li><code>data-*</code>: Custom data attributes for storing extra information.</li>
+        <li><code>rel</code>: Specifies the relationship between the current document and the linked document.</li>
+    </ul>
+
+    <h2>6. Conclusion</h2>
+    <p>In this lesson, you learned about HTML elements, their structure, and common attributes. You also explored practical examples of using attributes with various elements. Understanding these concepts will help you create more structured and meaningful HTML pages. In the next lesson, we’ll dive deeper into building a complete HTML structure and using more advanced elements.</p>
+
+    <a
