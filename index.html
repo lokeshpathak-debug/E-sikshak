@@ -116,11 +116,22 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
             color: white;
+            cursor: pointer; /* Change cursor to pointer */
         }
 
         .course-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Lesson List */
+        .lesson-list {
+            display: none; /* Initially hidden */
+            margin-top: 10px;
+            text-align: left; /* Align text to left */
+            color: black;
+            list-style-type: none; /* Remove bullets */
+            padding-left: 0; /* Remove default padding */
         }
 
         /* Responsive Design */
@@ -182,6 +193,17 @@
             }, 500);
         }
 
+        // Function to toggle lessons for the HTML course
+        function toggleLessons() {
+            const lessonList = document.getElementById('lesson-list');
+            lessonList.style.display = lessonList.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Function to navigate to the HTML course page
+        function goToHtmlCourse() {
+            window.location.href = 'html_course.html'; // Redirect to the HTML course page
+        }
+
         // Function to navigate to the quiz page
         function goToQuiz() {
             window.location.href = 'quiz.html'; // Redirect to the quiz page
@@ -195,11 +217,8 @@
         <p>Learn coding, explore new skills, and build your future with E-Shikshak. We offer a variety of programming courses for all levels. Join us and start your journey in the world of technology today!</p>
         
         <!-- Navigation Links -->
-        <a href="#" onclick="showCourses()">Explore Courses</
-        <nav>
-            
-            <a href="help.html">Help Center</a>
-        </nav>
+        <a href="#" onclick="showCourses()">Explore Courses</a>
+        <a href="help.html">Help Center</a> <!-- Help Center Link -->
         <a href="#" onclick="goToQuiz()">Take a Quiz</a> <!-- Updated Quiz Link -->
     </div>
           
@@ -210,21 +229,10 @@
         <button class="back-button" onclick="goBack()">Back</button>
         
         <!-- Course Cards -->
-        <div class="course-card">
-            <h3>Python Programming</h3>
-            <p>Learn the fundamentals of Python, one of the most versatile and in-demand programming languages.</p>
-            <button class="enroll-button">Enroll Now</button>
-        </div>
-
-        <div class="course-card">
-            <h3>JavaScript Development</h3>
-            <p>Master JavaScript to create dynamic web pages and applications.</p>
-            <button class="enroll-button">Enroll Now</button>
-        </div>
-
-        <div class="course-card">
-            <h3>C++ Programming</h3>
-            <p>Dive into C++, a language used</p></div></section><script type="text/javascript" id="dcoder_script">// Function to navigate to the quiz page
-function goToQuiz() {
-    window.location.href = 'quiz.html'; // Redirect to the quiz page
-}</script></body></html>
+        <div class="course-card" onclick="toggleLessons()">
+            <h3>HTML Programming</h3>
+            <p>Learn the fundamentals of HTML to create well-structured web pages.</p>
+            <div class="lesson-list" id="lesson-list">
+                <ul>
+                    <li><a href="html_lesson_1.html">Lesson 1: Introduction to HTML</a></li>
+                    <li><a href="html_lesson_2.html">Lesson 2:
