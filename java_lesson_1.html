@@ -1,132 +1,165 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 1: Introduction to Java</title>
+    <meta name="description" content="Learn Java - Lesson 1: Introduction to Java Programming">
+    <meta name="keywords" content="Java, Programming, Introduction, Basics">
+    <meta name="author" content="E-Shikshak">
+    <title>Java Lesson 1: Introduction to Java</title>
     <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+        /* Basic Reset */
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 10px 20px;
+
+        /* Body Styling */
+        body {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            color: #fff;
+            overflow: hidden;
         }
-        main {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        /* Container */
+        .container {
+            width: 80%;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            overflow: auto;
+            max-height: 85vh;
         }
-        h1, h2, h3 {
-            color: #333;
+
+        h1, h2 {
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
+
+        /* Paragraph Styling */
         p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
             line-height: 1.6;
-            margin-bottom: 20px;
+            color: #e0e0e0;
         }
-        code {
-            background: #eee;
-            padding: 2px 5px;
-            border-radius: 4px;
-        }
-        .back-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 15px;
-            background: #38f9d7;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .back-button:hover {
-            background: #3bb2b8;
-        }
-        .example {
-            background: #f4f4f4;
-            padding: 10px;
-            border: 1px solid #ddd;
+
+        /* Code Styling */
+        pre {
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
+            padding: 20px;
+            text-align: left;
+            color: #e0e0e0;
+            font-size: 1rem;
+            overflow-x: auto;
             margin-bottom: 20px;
         }
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            header {
-                padding: 15px;
-            }
-            main {
-                padding: 15px;
-            }
-            .back-button {
-                width: 100%;
-                text-align: center;
-            }
+        /* Back Button */
+        .back-button {
+            background: linear-gradient(135deg, #42e695, #3bb2b8);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
         }
 
-        @media (min-width: 769px) {
-            main {
-                max-width: 800px; /* Max width for larger screens */
-                margin: 0 auto;   /* Center the main content */
+        .back-button:hover {
+            background: linear-gradient(135deg, #3bb2b8, #42e695);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+
+            h1, h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .back-button {
+                padding: 10px 20px;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Container for Java Lesson 1 Content -->
+    <div class="container">
+        <h1>Java Programming - Lesson 1</h1>
+        <h2>Introduction to Java</h2>
+        <p>Java is a high-level, class-based, and object-oriented programming language designed to have as few implementation dependencies as possible. It is one of the most widely used programming languages, known for its portability, versatility, and extensive community support.</p>
 
-<header>
-    <h1>Lesson 1: Introduction to Java</h1>
-</header>
+        <h3>1. Why Learn Java?</h3>
+        <p>Java is a popular choice for building large-scale enterprise applications, Android apps, web servers, and many more. Key reasons to learn Java include:</p>
+        <ul>
+            <li><b>Platform Independence:</b> Java programs can run on any platform with a compatible JVM (Java Virtual Machine).</li>
+            <li><b>Object-Oriented:</b> Helps to structure complex programs into reusable pieces of code (objects).</li>
+            <li><b>Robust and Secure:</b> Java has strong memory management and security features.</li>
+        </ul>
 
-<main>
-    <h2>1. What is Java?</h2>
-    <p>Java is a high-level, class-based, object-oriented programming language designed to have as few implementation dependencies as possible. It is widely used for building applications, from mobile apps to large-scale enterprise systems.</p>
-
-    <h2>2. Features of Java</h2>
-    <ul>
-        <li><strong>Platform Independent:</strong> Java programs can run on any device that has the Java Virtual Machine (JVM) installed.</li>
-        <li><strong>Object-Oriented:</strong> Java is based on the principles of encapsulation, inheritance, and polymorphism.</li>
-        <li><strong>Robust:</strong> Java has strong memory management and exception handling features.</li>
-        <li><strong>Multithreaded:</strong> Java supports multithreading, allowing concurrent execution of two or more parts of a program.</li>
-    </ul>
-
-    <h2>3. Setting Up the Environment</h2>
-    <p>To start coding in Java, you need to set up your environment. Follow these steps:</p>
-    <ul>
-        <li>Download and install the <a href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html" target="_blank">Java Development Kit (JDK)</a>.</li>
-        <li>Set up your IDE (Integrated Development Environment). Popular options include <strong>IntelliJ IDEA</strong>, <strong>Eclipse</strong>, and <strong>NetBeans</strong>.</li>
-        <li>Write your Java code using a text editor or an IDE.</li>
-    </ul>
-
-    <h2>4. Writing Your First Java Program</h2>
-    <p>Here is a simple Java program to print "Hello, World!" to the console:</p>
-    <div class="example">
-        <pre><code>public class HelloWorld {
+        <h3>2. Java Program Structure</h3>
+        <p>Every Java program follows a certain structure. Here’s an example of a basic Java program:</p>
+        <pre>
+public class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        System.out.println("Hello, World!");  // Outputs "Hello, World!" to the console
     }
-}</code></pre>
+}
+        </pre>
+
+        <p>Explanation of the structure:</p>
+        <ul>
+            <li><b>public class HelloWorld:</b> Declares a class named <code>HelloWorld</code>. In Java, every application must have at least one class.</li>
+            <li><b>public static void main(String[] args):</b> This is the main method from where Java application execution begins.</li>
+            <li><b>System.out.println("Hello, World!");</b> Prints the text "Hello, World!" to the console.</li>
+        </ul>
+
+        <h3>3. Setting Up Java Development Environment</h3>
+        <p>To write and run Java programs, you need to set up the Java Development Kit (JDK) and an Integrated Development Environment (IDE) like IntelliJ IDEA or Eclipse:</p>
+        <ul>
+            <li>Download and install the latest version of the <b>JDK</b> from the official Oracle website.</li>
+            <li>Choose and install an IDE of your preference, such as <b>IntelliJ IDEA</b>, <b>Eclipse</b>, or <b>NetBeans</b>.</li>
+            <li>Configure the IDE to recognize the installed JDK and start coding.</li>
+        </ul>
+
+        <h3>4. Compiling and Running a Java Program</h3>
+        <p>After writing a Java program, you can compile and run it using the following commands in the command line:</p>
+        <pre>
+javac HelloWorld.java  // Compiles the Java file
+java HelloWorld        // Runs the compiled Java class
+        </pre>
+        <p>If there are no syntax errors, the program will execute and display "Hello, World!" in the console.</p>
+
+        <!-- Back Button -->
+        <button class="back-button" onclick="window.location.href='index.html'">Back to Courses</button>
     </div>
-
-    <h3>4.1. Understanding the Code</h3>
-    <p>This program defines a class named <code>HelloWorld</code>. Inside this class, there is a <code>main</code> method, which is the entry point of any Java application. The <code>System.out.println()</code> method is used to print text to the console.</p>
-
-    <h2>5. Conclusion</h2>
-    <p>In this lesson, you learned about the basics of Java, its features, and how to set up your programming environment. You also wrote your first Java program. In the next lesson, we will explore Java syntax and variables in detail.</p>
-
-    <a class="back-button" href="lesson0.html">Back to Lessons</a>
-</main>
-
 </body>
 </html>
